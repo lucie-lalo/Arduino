@@ -1,14 +1,24 @@
 #include <Arduino.h>
 
-int led = 13;
+void OnLed(){
+PORTB = PORTB | (1<<5);
+}
+
+void OffLed(){
+PORTB = PORTB &~(1<<5);
+}
+
+void ledSetup(){
+  DDRB = DDRB | (1<<5);
+}
 
 void setup() {
-  pinMode(led, OUTPUT);
+  ledSetup();
 }
 
 void loop() {
-  digitalWrite(led, HIGH);
+  OnLed();
   delay(1000);
-  digitalWrite(led, LOW);
+  OffLed();
   delay(1000);
 }
