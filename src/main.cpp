@@ -1,24 +1,14 @@
 #include <Arduino.h>
 
-void OnLed(){
-PORTB = PORTB | (1<<5);
-}
-
-void OffLed(){
-PORTB = PORTB &~(1<<5);
-}
-
-void ledSetup(){
-  DDRB = DDRB | (1<<5);
+void toggleLed(){
+  PINB = PINB | (1<<5);
 }
 
 void setup() {
-  ledSetup();
+   DDRB = DDRB | (1<<5);
 }
 
 void loop() {
-  OnLed();
-  delay(1000);
-  OffLed();
+  toggleLed();
   delay(1000);
 }
