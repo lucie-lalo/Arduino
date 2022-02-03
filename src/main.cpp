@@ -1,11 +1,25 @@
 #include <Arduino.h>
+#define LED_MASK (1<<5)
+
+
+void OnLed() {
+  PORTB |= LED_MASK;
+}
+
+void OffLed() {
+  PORTB &= ~LED_MASK;
+}
 
 void toggleLed(){
-  PINB = PINB | (1<<5);
+  PINB |= LED_MASK;
+}
+
+void ledSetup(){
+  DDRB |= LED_MASK;
 }
 
 void setup() {
-   DDRB = DDRB | (1<<5);
+  ledSetup();
 }
 
 void loop() {
